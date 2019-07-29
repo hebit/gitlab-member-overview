@@ -1,0 +1,40 @@
+.progress-bar{
+    padding: 0 1.5em;
+    width: 100%;
+    $bar-height: 0.8em;
+    height: $bar-height;
+    margin-bottom: $bar-height;
+
+
+    .progress-bar-inner{
+        align-items: center;
+        display: flex;
+        position: relative;
+        width: 100%;
+
+        & > * {
+            background: #6B6B6B;
+            border-radius: $bar-height;
+            height: $bar-height;
+            position: absolute;
+        }
+    
+        .points{
+            background: #63DE68;
+            z-index: 11;
+        }
+    
+        .goal{
+            border: $bar-height - 0.1em solid #6B6B6B;
+            border-radius: $bar-height - 0.1em;
+            left: 70%;
+            position: absolute;
+            z-index: 10;
+        }
+    
+        .bar{
+            width: 100%;
+            z-index: 0;
+        }
+    }
+}

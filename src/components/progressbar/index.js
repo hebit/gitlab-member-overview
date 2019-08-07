@@ -4,7 +4,7 @@ import './style.scss';
 class Bar extends Component{
   render() {
     let { points, goal } = this.props
-    const extra = 2
+    const extra = goal / 2
     const reached = points >= goal
     const totalreached = points >= goal + extra
     // console.log(points)

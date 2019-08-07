@@ -9,7 +9,7 @@ class App extends Component{
     userList: new Map(),
   }
 
-  memberGoal = 6
+  memberGoal = parseInt(process.env.REACT_APP_MEMBER_GOAL)
 
   settings = {
     acessKey: process.env.REACT_APP_ACESS_TOKEN,
@@ -49,7 +49,7 @@ class App extends Component{
       // let type = issue.labels.includes('Dev') ? 'dev' : issue.labels.includes('Gestão') ? 'ges' : null;
       let type = issue.labels.includes('Dev') ? 'dev' : 'gestao';
       let assigned_issue = {title, web_url, weight, type}
-      console.log(assigned_issue)
+      // console.log(assigned_issue)
       if(!userList.has(user.id)){ //add new item
         user.issues = [assigned_issue]
         user.weight = assigned_issue.weight
@@ -85,8 +85,6 @@ class App extends Component{
   render() {
     let { userList } = this.state
     userList = Array.from(userList.values()).sort((a, b) => a.weight < b.weight ? 1 : -1)
-    // console.log(users[0])
-    console.log(userList)
     let reachedUsers = 0
     userList.forEach((user) => user.weight >= this.memberGoal ? reachedUsers++ : false)
     

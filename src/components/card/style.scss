@@ -13,6 +13,9 @@
     $breath-space: 0.4em;
     $top-bar-height: 3.0em;
 
+    $dev-label-color: #fe4a49;
+    $managment-label-color: #567cc1;
+
     .title {
         align-items: center;
         background-color: rgba(255,255,255,0.1);
@@ -107,12 +110,12 @@
                 }
 
                 span.dev::after {
-                    background-color: #fe4a49;
+                    background-color: $dev-label-color;
                     content: "Dev";
                 }
 
                 span.gestao::after {
-                    background-color: #567cc1;
+                    background-color: $managment-label-color;
                     content: "Gestão";
                 }
             }

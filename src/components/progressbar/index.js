@@ -6,11 +6,12 @@ class Bar extends Component{
     let { points, goal } = this.props
     const extra = 2
     const reached = points >= goal
-    console.log(points)
+    const totalreached = points >= goal + extra
+    // console.log(points)
     const style = {
       points: { 
-        width: points <= goal + extra ? points/ (goal + extra) * 100 + '%' : '100%',
-        paddingRight: reached ? '0.5em' : 0,
+        width: totalreached ? '100%' : points/ (goal + extra) * 100 + '%',
+        paddingRight: reached && !totalreached ? '0.5em' : 0,
         boxSizing: reached ? 'content-box' : 'border-box'
       },
       goal: { 

@@ -1,4 +1,4 @@
-.card{
+.card {
     background-color: #333;
     border-radius: 3px;
     height: 100%;
@@ -13,7 +13,7 @@
     $breath-space: 0.4em;
     $top-bar-height: 3.0em;
 
-    .title{
+    .title {
         align-items: center;
         background-color: rgba(255,255,255,0.1);
         font-size: 1.2em;
@@ -22,37 +22,105 @@
         min-height: $top-bar-height * 10 / 12;
         padding: 0 $breath-space + 0.1em;
 
-        &::before{
+        &::before {
             content: '@';
         }
-        .name{
+        .name {
             font-weight: normal;
             opacity: .5;
 
-            &::before{
+            &::before {
                 content: '(';
                 margin-left: $breath-space;
             }
-            &::after{
+            &::after {
                 content: ')';
                 margin-right: $breath-space;
             }
         }
+
+        [class*="-prize"] {
+            margin-top: $breath-space / 2;
+            font-size: 1.2em;
+        }
+        .inactive-prize {
+            opacity: .5;
+        }        
     }
 
-    .info{
-        display: flex;
-        justify-content: space-between;
-        padding: 0 $breath-space * 4;
+    .info {
+        font-size: 1.2em;
+        list-style: none;
+        padding: 0 ($breath-space) * 3 0.2em ($breath-space) * 3;
 
-        span{
-            font-size: 1.2em;
+        summary {
+            display: flex;
+            justify-content: space-between;
+
+            &::-webkit-details-marker {
+                display:none;
+            }
+        }
+        
+        & > * > span{
+            cursor: pointer;
             font-weight: bold;
+
+            &:not( .percent ) {
+                align-items: center;
+                display: flex;
+                
+                &:hover {
+                    text-decoration: underline;
+                }
+
+                & > * {
+                    margin: 0 $breath-space;
+                }
+            }
+        }
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+
+            li {
+                padding: $breath-space * 2 0;
+                &:not( :last-child ) {
+                    border-bottom: 0.2em solid rgba(0,0,0,.1);
+                }
+
+                a {
+                    text-decoration: none;
+        
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+
+                span.dev::after,
+                span.gestao::after {
+                    border-radius: 3em;
+                    margin: 0 .2em;
+                    padding: 0 .4em;
+                    min-width: 32px;
+                }
+
+                span.dev::after {
+                    background-color: #fe4a49;
+                    content: "Dev";
+                }
+
+                span.gestao::after {
+                    background-color: #567cc1;
+                    content: "Gestão";
+                }
+            }
         }
     }
 }
 
-@media (max-width: 300px){
+@media (max-width: 300px) {
     .card .title .name {
         display: none;
     }

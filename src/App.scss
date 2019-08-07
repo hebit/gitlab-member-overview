@@ -11,6 +11,11 @@ body{
   width: 39.4em;
 }
 
+footer{
+  margin: 1em 0;
+  text-align: center;
+}
+
 @media (max-width: 39.4 * $em-size){
   .App{
     width: 100%;

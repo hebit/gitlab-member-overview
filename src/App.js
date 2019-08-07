@@ -9,12 +9,11 @@ class App extends Component{
     userList: new Map(),
   }
 
-  memberGoal = 4
+  memberGoal = 6
 
   settings = {
-    acessKey: 'PBpuVdjxc8dTgbUCkzVz' ,
-    groupId: '4521828',
-    internalGroupId: '4521869'
+    acessKey: process.env.REACT_APP_ACESS_TOKEN,
+    groupId: process.env.REACT_APP_GITLAB_GROUP_ID,
   }
 
   componentWillMount(){
@@ -46,11 +45,12 @@ class App extends Component{
 
   getAssignees = async (userList, issue) => {
     issue.assignees.forEach( user => {
-      let {title, web_url} = issue //let {title, web_url, weight} = issue
-      let weight = 1
-      let assigned_issue = {title, web_url, weight}
-      // console.log(assigned_issue)
-      if(!userList.has(user.id)){ //add item
+      let {title, web_url, weight} = issue 
+      // let type = issue.labels.includes('Dev') ? 'dev' : issue.labels.includes('Gestão') ? 'ges' : null;
+      let type = issue.labels.includes('Dev') ? 'dev' : 'gestao';
+      let assigned_issue = {title, web_url, weight, type}
+      console.log(assigned_issue)
+      if(!userList.has(user.id)){ //add new item
         user.issues = [assigned_issue]
         user.weight = assigned_issue.weight
         userList.set(user.id, user)
@@ -70,7 +70,6 @@ class App extends Component{
     await this.asyncForEach(miles, async (milestone) => {
       await axios.get(`https://gitlab.com/api/v4/groups/${groupId}/issues?milestone=${milestone.name}&state=closed&private_token=${acessKey}`)
       .then(res => res.data)
-      // .then(res => console.log(res))
       .then(issues => {
         issues.forEach(issue => {
           // console.log(issue)
@@ -85,15 +84,20 @@ class App extends Component{
   }
   render() {
     let { userList } = this.state
-    userList = Array.from(userList.values())
+    userList = Array.from(userList.values()).sort((a, b) => a.weight < b.weight ? 1 : -1)
     // console.log(users[0])
-    userList = userList.map( user => <Card user={user} key={user.id} goal={this.memberGoal}/>)
-    // console.log('from component')    
-    // console.log(userList)
+    console.log(userList)
+    let reachedUsers = 0
+    userList.forEach((user) => user.weight >= this.memberGoal ? reachedUsers++ : false)
     
     return (
       <div className="App">
-        {userList}
+        {userList.map( (user, position) => <Card user={user} key={user.id} pos={position} goal={this.memberGoal}/>)}
+        <footer>
+          <span>
+            {reachedUsers} de {userList.length} alcançaram a meta.
+          </span>
+        </footer>
       </div>
     );
   }

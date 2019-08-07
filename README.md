@@ -1,7 +1,40 @@
+# Gitlab Member Overview  
+
+> Esse projeto tem o objetivo de monitorar e acompanhar as atividades dos membros da InfoJr.  
+
+#### To-Do list:  
+* [ ] Visualizar todos os membros (e não somentes os que fecharam issues)  
+* [ ] Mostrar as milestones analizadas  
+* [ ] Considerar uma pontuação para commits
+* [ ] Criar uma animação para o membro de maior pontuação  
+
+## Instalação  
+*  `git clone https://gitlab.com/heboli/gitlab-member-overview.git`
+*  `cd gl-member-overview`
+*  `npm install`
+*  copie o .env.example para um arquivo chamado .env
+*  preencha as configurações necessárias para o projeto [[como configurar](#configurando-a-integracao)]
+*  `npm start`
+
+## Configurando a Integração
+Acesse a pagina de configurações do seu gitlab na área de Acess Token  
+
+![image](/uploads/f7f1b78d11e3be434264ee2a5849e254/image.png)   ![image](/uploads/7b2a31db9b810dab9fec6b4d0ad7cf36/image.png)  
+
+Crie uma chave com scope de API e defina o valor de **REACT_APP_ACESS_TOKEN** do _.env_ com essa chave  
+
+![image](/uploads/8953b7ad99cbabcfc7253ffe94d28382/image.png)  
+
+É possivel modificar o grupo que será consultado pela aplicação modificando o **REACT_APP_GITLAB_GROUP_ID** do _.env_ mas por padrão seu valor é o ID do grupo da InfoJr.  
+O número de membros premiados é definido pelo **REACT_APP_PRIZES** do _.env_ e por padrão seu valor é 3.
+
+> O conteudo a seguir faz parte da documentação default do [Create React App](https://github.com/facebook/create-react-app).
+
+## 
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
-
 In the project directory, you can run:
 
 ### `npm start`

@@ -8,36 +8,37 @@
 * [ ] Considerar uma pontuação para commits
 * [ ] Criar uma animação para o membro de maior pontuação  
 
-## Instalação  
+## Instalando  
 *  `git clone https://gitlab.com/heboli/gitlab-member-overview.git`
 *  `cd gl-member-overview`
 *  `npm install`
 *  copie o .env.example para um arquivo chamado .env
-*  preencha as configurações necessárias para o projeto [[como configurar](#configurando-a-integracao)]
+*  preencha as configurações necessárias para o projeto ([como configurar](#configurando))
 *  `npm start`
 
-## Configurando a Integração
-Acesse a pagina de configurações do seu gitlab na área de Acess Token  
-
-![image](/uploads/f7f1b78d11e3be434264ee2a5849e254/image.png)   ![image](/uploads/7b2a31db9b810dab9fec6b4d0ad7cf36/image.png)  
-
-Crie uma chave com scope de API e defina o valor de **REACT_APP_ACESS_TOKEN** do _.env_ com essa chave  
-
-![image](/uploads/8953b7ad99cbabcfc7253ffe94d28382/image.png)  
-
-É possivel modificar o grupo que será consultado pela aplicação modificando o **REACT_APP_GITLAB_GROUP_ID** do _.env_ mas por padrão seu valor é o ID do grupo da InfoJr.  
-O número de membros premiados é definido pelo **REACT_APP_PRIZES** do _.env_ e por padrão seu valor é 3.
+## Configurando
+No arquivo _.env_ os seguintes atributos deverão ser configurados:  
 
 | Atributo | Definição | Valor Padrão |
 |  ------  |  -------  | :----------: |
-| **REACT_APP_ACESS_TOKEN**     | Acees token gerado no gitlab                        |    -    |
-| **REACT_APP_GITLAB_GROUP_ID** | Id do grupo a ser monitorado                        | 3340354 |
-| **REACT_APP_PRIZES**          | Numero de membros a ser honradas*                   |    3    |
-| **REACT_APP_MEMBER_GOAL**     | Peso minimo de issues que cada membro deve alcançar |    6    |
+| **REACT_APP_ACESS_TOKEN**     | Acess token gerado no gitlab ([como gerar](#Integrando))|    -    |
+| **REACT_APP_GITLAB_GROUP_ID** | Id do grupo a ser monitorado                            | 3340354 |
+| **REACT_APP_PRIZES**          | Numero de membros a ser honrado*                       |    3    |
+| **REACT_APP_MEMBER_GOAL**     | Peso minimo de issues que cada membro deve alcançar     |    6    |
 
-\* Ex.: **REACT_APP_PRIZES**=3 significa que as(os) 3 melhores são honradas
+\* Ex.: REACT_APP_PRIZES=3 significa que as(os) 3 melhores são honradas  
 
-> O conteudo a seguir faz parte da documentação default do [Create React App](https://github.com/facebook/create-react-app).
+## Intagrando  
+
+Acesse a pagina de configurações do seu gitlab na área de Acess Token  
+
+![image](/uploads/7b33c8c6808f946085379934262234eb/image.png)   ![image](/uploads/ed6837756ec1c8b601592d200f3d224b/image.png)  
+
+Crie uma chave com scope de API e defina o valor de **REACT_APP_ACESS_TOKEN** do _.env_ com essa chave  
+
+![image](/uploads/a4ce9cc64c2f576980dbd353e69257de/image.png)  
+
+###### O conteudo a seguir faz parte da documentação default do [Create React App](https://github.com/facebook/create-react-app).
 
 ## 
 

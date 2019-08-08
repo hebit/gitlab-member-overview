@@ -10,7 +10,7 @@
 
 ## Instalando  
 *  `git clone https://gitlab.com/heboli/gitlab-member-overview.git`
-*  `cd gl-member-overview`
+*  `cd gitlab-member-overview`
 *  `npm install`
 *  copie o .env.example para um arquivo chamado .env
 *  preencha as configurações necessárias para o projeto ([como configurar](#configurando))

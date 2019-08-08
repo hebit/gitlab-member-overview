@@ -28,6 +28,15 @@ Crie uma chave com scope de API e defina o valor de **REACT_APP_ACESS_TOKEN** do
 É possivel modificar o grupo que será consultado pela aplicação modificando o **REACT_APP_GITLAB_GROUP_ID** do _.env_ mas por padrão seu valor é o ID do grupo da InfoJr.  
 O número de membros premiados é definido pelo **REACT_APP_PRIZES** do _.env_ e por padrão seu valor é 3.
 
+| Atributo | Definição | Valor Padrão |
+|  ------  |  -------  | :----------: |
+| **REACT_APP_ACESS_TOKEN**     | Acees token gerado no gitlab                        |    -    |
+| **REACT_APP_GITLAB_GROUP_ID** | Id do grupo a ser monitorado                        | 3340354 |
+| **REACT_APP_PRIZES**          | Numero de membros a ser honradas*                   |    3    |
+| **REACT_APP_MEMBER_GOAL**     | Peso minimo de issues que cada membro deve alcançar |    6    |
+
+\* Ex.: **REACT_APP_PRIZES**=3 significa que as(os) 3 melhores são honradas
+
 > O conteudo a seguir faz parte da documentação default do [Create React App](https://github.com/facebook/create-react-app).
 
 ## 
